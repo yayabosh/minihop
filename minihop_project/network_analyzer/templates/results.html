@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MiniHop - Results</title>
+</head>
+
+<body>
+    <h1>Analysis Results</h1>
+
+    <h2>Top Source IPs</h2>
+    {% if results.source_ips %}
+    <ul>
+        {% for ip, count in results.source_ips %}
+        <li>{{ ip }}: {{ count }} packets</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No source IPs detected.</p>
+    {% endif %}
+
+    <h2>Top Destination IPs</h2>
+    {% if results.destination_ips %}
+    <ul>
+        {% for ip, count in results.destination_ips %}
+        <li>{{ ip }}: {{ count }} packets</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No destination IPs detected.</p>
+    {% endif %}
+
+    <h2>Protocol Breakdown</h2>
+    {% if results.protocols %}
+    <ul>
+        {% for proto, count in results.protocols %}
+        <li>{{ proto }}: {{ count }} packets</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No protocols detected.</p>
+    {% endif %}
+
+    <a href="{% url 'upload_pcap' %}">Analyze Another File</a>
+</body>
+
+</html>
