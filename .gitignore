@@ -1,0 +1,5 @@
+.vscode
+
+minihop_env/
+
+pyproject.toml
